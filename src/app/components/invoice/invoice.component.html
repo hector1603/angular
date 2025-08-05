@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="card my-5">
+        <div class="card-header">
+            <h2>FACTURA</h2>
+        </div>
+        <div class="card-body">
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item">Nro. {{invoice.id}}</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>EMPRESA</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">RUC: {{invoice.company.ruc}}</li>
+                        <li class="list-group-item">NOMBRE: {{invoice.company.name}}</li>
+                        <li class="list-group-item">
+                            DIRECCION: {{invoice.company.address.city}}
+                            - {{invoice.company.address.principalStreet}}
+                            {{invoice.company.address.code}}
+                            {{invoice.company.address.secondaryStreet}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>CLIENTE</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">CEDULA: {{invoice.customer.id}}</li>
+                        <li class="list-group-item">NOMBRE: {{invoice.customer.name + ' ' + invoice.customer.surname}}
+                        </li>
+                        <li class="list-group-item">
+                            DIRECCION: {{invoice.customer.address.city}}
+                            - {{invoice.customer.address.principalStreet}}
+                            {{invoice.customer.address.code}}
+                            {{invoice.customer.address.secondaryStreet}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card my-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>PRODUCTO</th>
+                            <th>PRECIO UNITARIO</th>
+                            <th>CANTIDAD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of invoice.items; track $index) {
+                        <tr>
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.product.price}}</td>
+                            <td>{{item.quantity}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
