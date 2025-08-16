@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
     <div class="card my-5">
         <div class="card-header">
             <h2>FACTURA</h2>
@@ -20,6 +20,43 @@
             <div class="card my-3">
                 <invoice-detail [items]="invoice.items"></invoice-detail>
             </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="container" *ngIf="invoice">
+    <div class="card my-5">
+        <div class="card-header">
+            <h2>FACTURA</h2>
+        </div>
+        <div class="card-body">
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item">Nro. {{invoice.id}}</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <company-view [company]="invoice.company"></company-view>
+                </div>
+                <div class="col">
+                    <customer-view [customer]="invoice.customer"></customer-view>
+                </div>
+            </div>
+            <div class="card my-3">
+                <invoice-detail [items]="invoice.items"></invoice-detail>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="!invoice">
+    <div class="card my-5">
+        <div class="card-header">
+            <h2>FACTURA</h2>
+        </div>
+        <div class="card-body">
+            <p>Cargando datos de la factura...</p>
         </div>
     </div>
 </div>
